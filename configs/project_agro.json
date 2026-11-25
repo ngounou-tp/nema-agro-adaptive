@@ -32,10 +32,11 @@
     ["Visualize", "Adaptive Data", "REPLACE: what you checked (task balance, languages, outliers) and fixed"],
     ["AutoScientist", "AutoScientist", "REPLACE: goal text, base model, number of runs, chosen run"]
   ],
-  "limitations": "- Synthetic messages cannot cover every way people write; real-message accuracy is reported separately when available.\n- Pidgin spelling is not standardised; quality varies.\n- Pest and disease triage only chooses among problems listed in the context table; it is not a diagnosis. Severe or unknown cases are sent to an extension officer.\n- The model must never be used to set pesticide doses without the official label; doses only come from label text placed in the context.\n- Prices and conversion factors in training contexts are examples; always pass current local references.",
+  "limitations": "- Synthetic messages cannot cover every way people write; real-message accuracy is reported separately when available.\n- Pidgin spelling is not standardised; quality varies.\n- Pest and disease triage only chooses among problems listed in the context table; it is not a diagnosis. Severe or unknown cases are sent to an extension officer.\n- The model must never be used to set pesticide doses without the official label; doses only come from label text placed in the context.\n- Prices and conversion factors in training contexts are examples; always pass current local references.\n- Reference prices in agro_unit_price come from real WFP market data (HDX); some markets stopped reporting years ago, so a reference can be several years old.",
   "how_made": "1. Python generators (in the GitHub repo) produced messages and tables with exact labels in fr/en/pcm.\n2. A test set was split off and frozen before any upload (15% random + held-out templates, towns, items).\n3. Training rows went through Adaption Adaptive Data; advisory rows were created with Forge from openly licensed documents.\n4. `merge_adapted.py` dropped rows with broken JSON, wrong keys, duplicates or any overlap with the test set.",
   "sources": [
     ["Synthetic generators (this repo)", "own work", "cc-by-4.0"],
+    ["Cameroon - Food Prices (reference prices in agro_unit_price)", "World Food Programme (WFP) via HDX, https://data.humdata.org/dataset/wfp-food-prices-for-cameroon", "CC BY-IGO"],
     ["REPLACE document title", "REPLACE publisher + URL", "REPLACE licence"]
   ]
 }

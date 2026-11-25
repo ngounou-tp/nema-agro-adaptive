@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import csv
 import random
+import re
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -36,6 +37,12 @@ WFP_NAME = {  # HDX commodity name -> lexicon id (extend after you open the CSV)
     "Groundnuts": "groundnut", "Groundnuts (shelled)": "groundnut", "Tomatoes": "tomato", "Onions": "onion",
     "Potatoes (Irish)": "irish_potato", "Plantains": "plantain", "Yam": "yam", "Cocoyam": "cocoyam",
     "Oil (palm)": "palm_oil", "Gari": "garri", "Soybeans": "soybean",
+    # names as they appear in data/seeds/wfp_food_prices_cmr.csv (HDX "Cameroon - Food Prices")
+    "Maize (yellow)": "maize", "Rice (long grain, imported)": "rice", "Beans (red)": "beans",
+    "Beans (niebe)": "cowpea", "Cowpeas (Red)": "cowpea", "Cassava (fresh)": "cassava",
+    "Cassava (cossette)": "cassava_chips", "Cassava meal (gari)": "garri", "Cocoyam (macabo)": "cocoyam",
+    "Taro": "taro", "Bananas": "banana", "Okra (fresh)": "okra", "Sorghum (red)": "sorghum",
+    "Sorghum (white)": "sorghum", "Millet": "millet", "Sesame": "sesame", "Watermelons": "watermelon",
 }
 
 
@@ -56,7 +63,8 @@ def load_wfp_refs(path: Path):
                 price = float(row["price"])
             except (KeyError, ValueError):
                 continue
-            per_kg = {"KG": 1, "100KG": 100, "50KG": 50, "25KG": 25}.get(unit)
+            m = re.fullmatch(r"(\d*)KG", unit)  # KG, 5KG, 12KG, 90KG, 100KG...; litres and pieces are skipped
+            per_kg = (int(m.group(1)) if m.group(1) else 1) if m else None
             if not per_kg:
                 continue
             key = (pid, row.get("market", ""))

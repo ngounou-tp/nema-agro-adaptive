@@ -19,13 +19,89 @@ def save(name, cells):
     (OUT / name).write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
+BUILD_SOURCES = """\
+## Data sources
+
+| File | What it is | Used for |
+| --- | --- | --- |
+| `data/lexicon/agro_lexicon.json` | 42 products with French, English, Pidgin and local names; units with kg weights; towns in all 10 regions; quality words | every synthetic agro message. Price ranges there are illustrative, not market facts |
+| `data/seeds/wfp_food_prices_cmr.csv` | WFP / HDX *Cameroon - Food Prices* (real market prices, XAF) | the reference prices in `agro_unit_price` |
+| `data/seeds/wfp_markets_cmr.csv` | WFP / HDX *Cameroon - Markets* (market names, regions, coordinates) | reference only |
+| `data/seeds/manual_listings.csv` | your real WhatsApp/Facebook messages, anonymised (target 20 per language) | half go to the `test_real` split |
+| `data/seeds/advice_mcq.csv`, `data/seeds/hygiene_mcq.csv` | your MCQs from the fiches (target 40-80) | test set only, never training |
+| `data/seeds/symptom_table.csv` | crop symptoms and actions | agro knowledge examples |
+| `data/lexicon/pcm_review_sheet.csv` | every Pidgin string, for one native speaker to check | not used by the build; copy corrections back into the lexicon |
+
+If the two WFP files are not in your repo, the next cell downloads them from HDX. Commit them to GitHub so every run uses the same prices: new HDX data changes the reference prices in the examples.
+"""
+
+BUILD_CHECK = """\
+import csv, json, urllib.request
+from pathlib import Path
+
+SEEDS = Path('data/seeds')
+HDX = 'https://data.humdata.org/api/3/action/package_show?id=wfp-food-prices-for-cameroon'
+
+# 1. WFP / HDX Cameroon prices (real reference prices for agro_unit_price)
+missing = [n for n in ('wfp_food_prices_cmr.csv', 'wfp_markets_cmr.csv') if not (SEEDS / n).exists()]
+if missing:
+    print('not in the repo, downloading from HDX:', missing)
+    for r in json.load(urllib.request.urlopen(HDX, timeout=60))['result']['resources']:
+        name = r['url'].rsplit('/', 1)[-1]
+        if name in missing:
+            urllib.request.urlretrieve(r['url'], SEEDS / name)
+with open(SEEDS / 'wfp_food_prices_cmr.csv', encoding='utf-8') as f:
+    wfp = [r for r in csv.DictReader(f) if not r['date'].startswith('#')]
+print(f"WFP prices: {len(wfp)} rows, {min(r['date'] for r in wfp)} to {max(r['date'] for r in wfp)}, "
+      f"{len({r['market'] for r in wfp})} markets")
+from src.generators.gen_agro_calc import load_wfp_refs
+covered = sorted({pid for pid, _ in load_wfp_refs(SEEDS / 'wfp_food_prices_cmr.csv')})
+print('lexicon products with real WFP reference prices:', ', '.join(covered))
+
+# 2. Lexicon
+lex = json.load(open('data/lexicon/agro_lexicon.json', encoding='utf-8'))
+print(f"lexicon: {len(lex['products'])} products, {len(lex['units'])} units, "
+      f"{sum(map(len, lex['places'].values()))} towns")
+review = lex['_pcm_native_speaker_review']
+print('Pidgin native-speaker review:', review['status'], '| sheet:', review['review_sheet'])
+if not review['completed']:
+    print('  WARNING: the Pidgin forms are not checked by a native speaker yet; do not say they are.')
+
+# 3. Your own data
+def filled(path, col):
+    with open(path, encoding='utf-8') as f:
+        return [r for r in csv.DictReader(f) if (r.get(col) or '').strip() and not r[col].startswith('EXAMPLE')]
+
+msgs = filled(SEEDS / 'manual_listings.csv', 'message')
+print('real messages per language:', {l: sum(r['lang'].strip() == l for r in msgs) for l in ('fr', 'en', 'pcm')},
+      '(target 20 each; half go to test_real)')
+bad = [r['message'][:50] for r in msgs
+       if r['product'].strip() not in {p['id'] for p in lex['products']} or r['unit'].strip() not in lex['units']]
+assert not bad, f'manual_listings.csv uses product or unit codes missing from the lexicon: {bad}'
+for name in ('advice_mcq.csv', 'hygiene_mcq.csv'):
+    print(f'{name}: {len(filled(SEEDS / name, "question"))} MCQs (target 40-80, all go to the test set)')
+"""
+
+BUILD_WFP_USED = """\
+with open('data/build/gen_agro_calc.jsonl', encoding='utf-8') as f:
+    n_wfp = sum('source WFP/HDX' in line for line in f)
+print('agro_unit_price examples with real WFP reference prices:', n_wfp)
+assert n_wfp, 'no WFP reference prices were used: check the WFP cell above'
+"""
+
 BUILD = [
     md("# 1. Build the datasets (CPU, no GPU needed)\n\nRuns the kit's generators in the cloud and writes the files you upload to Adaption.\n\n"
-       "**Settings:** Accelerator = None, Internet = On. Edit `REPO` below, then *Run All* (about 1 minute).\n\n"
+       "**Settings:** Accelerator = None, Internet = On. Edit `REPO` below, then *Run All* (about 2 minutes).\n\n"
        "Your own data goes in the GitHub repo first (edit in the GitHub web editor): `data/seeds/manual_listings.csv` "
        "(real messages), `data/seeds/advice_mcq.csv` and `data/seeds/hygiene_mcq.csv` (MCQs), `data/seeds/symptom_table.csv`."),
+    md(BUILD_SOURCES),
     code("REPO = 'https://github.com/YOUR_GITHUB_USER/nema-agro-adaptive.git'  # your public kit repo\n"
-         "!git clone -q $REPO kit\n%cd kit\n!bash scripts/build_all.sh"),
+         "!git clone -q $REPO kit\n%cd kit"),
+    md("## Check the data sources"),
+    code(BUILD_CHECK),
+    md("## Build"),
+    code("!bash scripts/build_all.sh"),
+    code(BUILD_WFP_USED),
     code("import json, shutil, os\n"
          "os.makedirs('/kaggle/working/for_adaption', exist_ok=True)\n"
          "for p in ('agro', 'waste'):\n"
@@ -59,8 +135,19 @@ EVAL = [
          "    try:\n        os.environ[name] = secrets.get_secret(name)\n    except Exception:\n        print('secret not set (fine if you skip the part that needs it):', name)"),
     code("!git clone -q $REPO kit\n%cd kit\n"
          "!pip install -q -U transformers peft bitsandbytes accelerate huggingface_hub kagglehub adaption\n"
-         "!bash scripts/build_all.sh > /dev/null && echo 'datasets rebuilt (same frozen test set)'\n"
+         "!bash scripts/build_all.sh > /dev/null && echo 'datasets rebuilt'\n"
          "!nvidia-smi --query-gpu=name,memory.total --format=csv"),
+    code("# The rebuilt test set must be the one frozen by notebook 1 (committed to GitHub), or results are not comparable.\n"
+         "import subprocess\n"
+         "test_file = f'data/build/{PROJECT}/test.jsonl'\n"
+         "if subprocess.run(['git', 'ls-files', '--error-unmatch', test_file], capture_output=True).returncode:\n"
+         "    print(f'WARNING: {test_file} is not committed, so this run cannot prove it uses the same test set as notebook 1.')\n"
+         "    print('Commit the test.jsonl from notebook 1 (see its last cell) and run again.')\n"
+         "else:\n"
+         "    changed = subprocess.run(['git', 'diff', '--quiet', '--', test_file]).returncode\n"
+         "    assert not changed, (f'the rebuilt {test_file} differs from the committed one: the lexicon, generators or seeds '\n"
+         "                         'changed after notebook 1. Run notebook 1 again and commit its test.jsonl.')\n"
+         "    print('test set matches the committed frozen copy')"),
     md("## B. Copy the trained weights from Adaption to Hugging Face (skip if already there)\n\n"
        "No-code alternative: in the Adaption app, open the trained model, click **Weights export** to download the archive, "
        "create an empty model repo on huggingface.co and upload the extracted files with **Add file \u2192 Upload files**."),
