@@ -1,0 +1,29 @@
+item_fr,item_en,item_pcm,category,valorisable,hazardous,route_fr,route_en
+épluchures de plantain,plantain peels,plantain skin,organic,true,false,Compost ou nourriture pour animaux d'élevage si elles sont propres.,Compost them or use them as livestock feed if clean.
+épluchures de manioc,cassava peels,cassava skin,organic,true,false,Compost ou séchage pour l'alimentation animale après traitement adapté.,Compost them or dry them for animal feed after proper processing.
+restes de repas,food leftovers,chop wey remain,organic,true,false,Compost ou biogaz; ne pas laisser à l'air libre.,Compost or biogas; do not leave them in the open.
+feuilles et herbes coupées,leaves and cut grass,leaf and grass wey dem cut,organic,true,false,Compost ou paillage du jardin.,Compost or garden mulch.
+coques de cabosses de cacao,cocoa pod husks,cocoa pod shell,organic,true,false,Compost ou cendres pour fabrication de savon artisanal; ne pas laisser pourrir sous les cacaoyers.,Compost or ash for local soap making; do not leave them rotting under the cocoa trees.
+pelures de fruits,fruit peels,fruit skin,organic,true,false,Compost.,Compost.
+bouteille plastique d'eau (PET),plastic water bottle (PET),plastic water bottle,plastic_rigid,true,false,"Vider, écraser et garder à part pour les collecteurs ou points de collecte plastique.","Empty, crush and keep apart for plastic collectors or collection points."
+bidon plastique d'huile,plastic oil jerrycan,plastic jerrican for oil,plastic_rigid,true,false,"Laver et réutiliser, ou remettre aux collecteurs de plastique.","Wash and reuse, or give to plastic collectors."
+seau plastique cassé,broken plastic bucket,broken plastic bucket,plastic_rigid,true,false,Remettre aux collecteurs de plastique dur.,Give to hard-plastic collectors.
+sachets plastiques,plastic bags,plastic sachet dem,plastic_film,false,false,"Réutiliser si possible, sinon sac fermé pour la collecte; ne jamais brûler.","Reuse if possible, otherwise a closed bag for collection; never burn them."
+emballages de biscuits,biscuit wrappers,biscuit wrapper,plastic_film,false,false,Sac fermé pour la collecte; ne jamais brûler.,Closed bag for collection; never burn.
+carton d'emballage,cardboard box,carton,paper_cardboard,true,false,"Plier, garder au sec et remettre aux collecteurs ou réutiliser.","Flatten, keep dry and give to collectors or reuse."
+vieux journaux,old newspapers,old newspaper,paper_cardboard,true,false,Réutiliser pour emballer ou remettre aux collecteurs de papier.,Reuse for wrapping or give to paper collectors.
+bouteille de bière en verre,glass beer bottle,glass beer bottle,glass,true,false,Rapporter au vendeur (consigne) pour réutilisation.,Return it to the seller (deposit) for reuse.
+bocal en verre,glass jar,glass jar,glass,true,false,Laver et réutiliser; verre cassé emballé à part pour protéger les collecteurs.,Wash and reuse; wrap broken glass separately to protect collectors.
+canette en aluminium,aluminium can,aluminium tin,metal,true,false,Écraser et remettre aux ferrailleurs ou collecteurs de métaux.,Crush and give to scrap-metal collectors.
+vieille tôle,old roofing sheet,old zinc,metal,true,false,Vendre aux ferrailleurs.,Sell to scrap dealers.
+boîte de conserve,tin can,tin can,metal,true,false,Rincer et remettre aux collecteurs de métaux.,Rinse and give to metal collectors.
+vieux téléphone,old mobile phone,old phone,ewaste,true,true,"Donner à un réparateur ou à un point de collecte des déchets électroniques; ne jamais brûler.",Give to a repairer or an e-waste collection point; never burn it.
+chargeur cassé,broken charger,charger wey don spoil,ewaste,true,true,Point de collecte des déchets électroniques; ne jamais brûler.,E-waste collection point; never burn it.
+piles usagées,used batteries,old battery dem,hazardous,false,true,"Garder dans un récipient fermé et sec pour un point de collecte; ne jamais brûler ni enterrer.","Keep in a closed, dry container for a collection point; never burn or bury."
+médicaments périmés,expired medicines,medicine wey don expire,hazardous,false,true,Rapporter à une pharmacie; ne pas jeter dans les latrines ni dans la rivière.,Return them to a pharmacy; do not throw them into latrines or rivers.
+emballage vide de pesticide,empty pesticide container,empty container of farm medicine,hazardous,false,true,"Ne jamais réutiliser pour l'eau ou la nourriture; rincer trois fois, percer et rapporter au point de collecte indiqué par le vendeur.","Never reuse for water or food; triple-rinse, puncture and return to the collection point named by the seller."
+ampoule fluorescente,fluorescent bulb,tube light,hazardous,false,true,"Ne pas casser; emballer et apporter à un point de collecte.",Do not break it; wrap it and take it to a collection point.
+vieux vêtements,old clothes,old dress dem,textile,true,false,"Donner, réutiliser en chiffons ou vendre.","Donate, reuse as rags or sell."
+couches jetables,disposable diapers,pampers wey dem don use,residual,false,false,Sac bien fermé pour la collecte municipale.,Tightly closed bag for municipal collection.
+cendres de cuisine,cooking ash,fire ash,residual,true,false,Peut servir au jardin en petite quantité ou à la fabrication de savon artisanal.,Can be used in small amounts in the garden or for local soap making.
+balayures de la maison,house sweepings,dirty wey dem sweep for house,residual,false,false,Sac fermé pour la collecte.,Closed bag for collection.

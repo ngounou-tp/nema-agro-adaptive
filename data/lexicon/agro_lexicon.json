@@ -1,0 +1,58 @@
+{
+  "_note": "Lexicon used ONLY to generate synthetic training/eval messages. Price ranges are illustrative inputs for message generation, not market facts. Review every Pidgin spelling with native speakers and add your own local names.",
+  "products": [
+    {"id": "maize", "fr": ["maïs", "mais"], "en": ["maize", "corn"], "pcm": ["corn", "kon"], "units": ["kg", "bag_100kg", "bag_50kg", "bucket", "tonne"], "price_per_kg": [180, 350]},
+    {"id": "cassava", "fr": ["manioc", "tubercules de manioc"], "en": ["cassava", "cassava tubers"], "pcm": ["cassava", "kasada"], "units": ["kg", "bag_100kg", "tonne", "basin"], "price_per_kg": [80, 200]},
+    {"id": "cassava_flour", "fr": ["farine de manioc", "couscous de manioc"], "en": ["cassava flour"], "pcm": ["cassava flour", "fufu flour"], "units": ["kg", "bag_50kg", "bucket"], "price_per_kg": [300, 600]},
+    {"id": "garri", "fr": ["gari", "tapioca"], "en": ["garri"], "pcm": ["garri"], "units": ["kg", "bag_50kg", "bucket", "basin"], "price_per_kg": [400, 800]},
+    {"id": "plantain", "fr": ["plantain", "régime de plantain", "plantains"], "en": ["plantain", "plantain bunches"], "pcm": ["plantain", "plantain bunch"], "units": ["bunch", "tonne"], "price_per_unit": {"bunch": [2500, 7000]}, "kg_per_unit": {"bunch": 15}},
+    {"id": "banana", "fr": ["banane douce", "bananes"], "en": ["banana", "sweet banana"], "pcm": ["banana", "sweet banana"], "units": ["bunch", "kg"], "price_per_unit": {"bunch": [1500, 4000]}, "kg_per_unit": {"bunch": 18}},
+    {"id": "cocoa", "fr": ["cacao", "fèves de cacao", "cacao marchand"], "en": ["cocoa", "cocoa beans"], "pcm": ["cocoa"], "units": ["kg", "bag_65kg", "tonne"], "price_per_kg": [3000, 5500]},
+    {"id": "coffee", "fr": ["café", "café arabica", "café robusta"], "en": ["coffee", "arabica coffee", "robusta coffee"], "pcm": ["coffee"], "units": ["kg", "bag_60kg", "tonne"], "price_per_kg": [1200, 2800]},
+    {"id": "tomato", "fr": ["tomate", "tomates"], "en": ["tomato", "tomatoes"], "pcm": ["tomato", "tomatoes"], "units": ["crate", "basin", "kg"], "price_per_unit": {"crate": [6000, 25000], "basin": [4000, 15000]}, "kg_per_unit": {"crate": 30, "basin": 25}},
+    {"id": "onion", "fr": ["oignon", "oignons"], "en": ["onion", "onions"], "pcm": ["onion", "onions"], "units": ["bag_100kg", "bag_50kg", "kg"], "price_per_kg": [250, 700]},
+    {"id": "irish_potato", "fr": ["pomme de terre", "pommes de terre"], "en": ["irish potato", "potatoes"], "pcm": ["irish", "irish potato"], "units": ["bag_100kg", "bag_50kg", "kg", "bucket"], "price_per_kg": [200, 500]},
+    {"id": "groundnut", "fr": ["arachide", "arachides", "pistache d'arachide"], "en": ["groundnut", "groundnuts", "peanuts"], "pcm": ["groundnut", "gronnut"], "units": ["kg", "bucket", "bag_50kg"], "price_per_kg": [600, 1300]},
+    {"id": "beans", "fr": ["haricot", "haricots"], "en": ["beans", "dry beans"], "pcm": ["beans", "bins"], "units": ["kg", "bucket", "bag_100kg"], "price_per_kg": [500, 1100]},
+    {"id": "rice", "fr": ["riz", "riz paddy", "riz local"], "en": ["rice", "paddy rice", "local rice"], "pcm": ["rice", "local rice"], "units": ["kg", "bag_50kg", "bag_25kg"], "price_per_kg": [400, 750]},
+    {"id": "yam", "fr": ["igname", "ignames"], "en": ["yam", "yams"], "pcm": ["yam", "yams"], "units": ["kg", "tuber_heap", "tonne"], "price_per_kg": [250, 600]},
+    {"id": "cocoyam", "fr": ["macabo", "macabos"], "en": ["cocoyam", "cocoyams"], "pcm": ["cocoyam", "kokoyam"], "units": ["kg", "basin", "bag_100kg"], "price_per_kg": [200, 500]},
+    {"id": "palm_oil", "fr": ["huile de palme", "huile rouge"], "en": ["palm oil", "red oil"], "pcm": ["red oil", "palm oil"], "units": ["litre", "jerrycan_20l"], "price_per_litre": [900, 1600]},
+    {"id": "egusi", "fr": ["pistache", "graines de courge (egusi)"], "en": ["egusi", "melon seeds"], "pcm": ["egusi", "pistache"], "units": ["kg", "bucket"], "price_per_kg": [1800, 3500]},
+    {"id": "soybean", "fr": ["soja", "graines de soja"], "en": ["soybeans", "soya"], "pcm": ["soya", "soya beans"], "units": ["kg", "bag_100kg"], "price_per_kg": [350, 700]},
+    {"id": "pepper", "fr": ["piment", "piments"], "en": ["pepper", "hot pepper"], "pcm": ["pepe", "pepper"], "units": ["kg", "basin", "bucket"], "price_per_kg": [600, 2000]}
+  ],
+  "units": {
+    "kg": {"kg": 1, "fr": ["kg", "kilos", "kilo"], "en": ["kg", "kilos"], "pcm": ["kilo", "kg"]},
+    "tonne": {"kg": 1000, "fr": ["tonne", "tonnes", "t"], "en": ["tonne", "tonnes", "tons"], "pcm": ["ton", "tons"]},
+    "bag_100kg": {"kg": 100, "fr": ["sac de 100 kg", "sacs de 100 kg"], "en": ["100 kg bag", "100kg bags"], "pcm": ["big bag (100 kg)", "100 kilo bag"]},
+    "bag_65kg": {"kg": 65, "fr": ["sac de 65 kg", "sacs de 65 kg"], "en": ["65 kg bag", "65kg bags"], "pcm": ["65 kilo bag"]},
+    "bag_60kg": {"kg": 60, "fr": ["sac de 60 kg", "sacs de 60 kg"], "en": ["60 kg bag", "60kg bags"], "pcm": ["60 kilo bag"]},
+    "bag_50kg": {"kg": 50, "fr": ["sac de 50 kg", "sacs de 50 kg"], "en": ["50 kg bag", "50kg bags"], "pcm": ["50 kilo bag", "half bag (50 kg)"]},
+    "bag_25kg": {"kg": 25, "fr": ["sac de 25 kg", "sacs de 25 kg"], "en": ["25 kg bag", "25kg bags"], "pcm": ["25 kilo bag"]},
+    "bucket": {"kg": null, "fr": ["seau", "seaux"], "en": ["bucket", "buckets"], "pcm": ["bucket", "bokit"]},
+    "basin": {"kg": null, "fr": ["bassine", "bassines"], "en": ["basin", "basins"], "pcm": ["basin", "basins"]},
+    "crate": {"kg": null, "fr": ["cageot", "cageots", "caisse", "caisses"], "en": ["crate", "crates"], "pcm": ["crate", "crates"]},
+    "bunch": {"kg": null, "fr": ["régime", "régimes"], "en": ["bunch", "bunches"], "pcm": ["bunch", "bunches"]},
+    "tuber_heap": {"kg": null, "fr": ["tas", "tas de tubercules"], "en": ["heap", "heaps"], "pcm": ["heap", "heaps"]},
+    "litre": {"kg": null, "fr": ["litre", "litres"], "en": ["litre", "litres"], "pcm": ["litre", "liters"]},
+    "jerrycan_20l": {"kg": null, "fr": ["bidon de 20 L", "bidons de 20 litres"], "en": ["20 L jerrycan", "20-litre jerrycans"], "pcm": ["20 litre jerrican", "jerrican"]}
+  },
+  "places": {
+    "Littoral": ["Douala", "Edéa", "Nkongsamba", "Penja", "Loum", "Mbanga"],
+    "Centre": ["Yaoundé", "Mbalmayo", "Obala", "Bafia", "Akonolinga", "Mfou"],
+    "Ouest": ["Bafoussam", "Dschang", "Foumbot", "Mbouda", "Bafang", "Bangangté", "Foumban"],
+    "Nord-Ouest": ["Bamenda", "Kumbo", "Ndop", "Wum", "Nkambé"],
+    "Sud-Ouest": ["Buea", "Limbé", "Kumba", "Mamfe", "Muyuka", "Tiko"],
+    "Sud": ["Ebolowa", "Kribi", "Sangmélima", "Ambam"],
+    "Est": ["Bertoua", "Batouri", "Abong-Mbang"],
+    "Adamaoua": ["Ngaoundéré", "Meiganga", "Tibati"],
+    "Nord": ["Garoua", "Guider", "Touboro"],
+    "Extrême-Nord": ["Maroua", "Mokolo", "Yagoua", "Kousséri"]
+  },
+  "quality": {
+    "fr": ["bien sec", "premier choix", "grade 1", "bien fermenté", "sans moisissure", "frais", "trié"],
+    "en": ["well dried", "first grade", "grade 1", "well fermented", "no mould", "fresh", "sorted"],
+    "pcm": ["dry well well", "number one quality", "grade one", "e ferment fine", "no mould", "fresh fresh", "we don sort am"]
+  }
+}

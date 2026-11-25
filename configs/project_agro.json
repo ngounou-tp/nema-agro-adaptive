@@ -1,0 +1,41 @@
+{
+  "_comment": "Fill every REPLACE value before running src/make_cards.py. hf_user / kaggle_user = your usernames.",
+  "project": "agro",
+  "author": "Patricia Ornella Ngounou Tchuinteu",
+  "hf_user": "REPLACE",
+  "kaggle_user": "REPLACE",
+  "model_name": "NEMA-Agro LoRA",
+  "hf_model_repo": "REPLACE/nema-agro-lora",
+  "hf_dataset_repo": "REPLACE/nema-agro-dataset",
+  "kaggle_model_handle": "REPLACE/nema-agro/transformers/lora-v1",
+  "kaggle_dataset_handle": "REPLACE/nema-agro-dataset",
+  "kaggle_notebook_url": "REPLACE",
+  "github_repo": "https://github.com/REPLACE/nema-agro-adaptive",
+  "project_url": "https://nema-koql.onrender.com",
+  "base_model": "REPLACE (e.g. Qwen/Qwen3.5-9B: use the official Hub id)",
+  "license": "apache-2.0",
+  "data_license": "cc-by-4.0",
+  "languages": ["fr", "en", "pcm"],
+  "tags": ["agriculture", "cameroon", "africa", "lora", "adaption", "autoscientist", "information-extraction", "french", "pidgin"],
+  "lora_name": "nema-agro",
+  "bench_name": "CamAgriBench v1",
+  "per_bucket": 40,
+  "eval_time": "REPLACE (e.g. 50 minutes)",
+  "autoscientist_winrate": "REPLACE (e.g. 68 of 100 comparisons)",
+  "one_line": "A multi-task agricultural model for Cameroon and Central/West Africa that reads farmers' and traders' messages in French, English and Cameroonian Pidgin and returns structured, safe, context-grounded answers.",
+  "training_steps": [
+    ["Seed data", "kit generators", "Synthetic marketplace, price, ledger, traceability, triage and input-safety examples with exact gold labels; REPLACE real messages collected"],
+    ["Forge", "Adaptive Data", "REPLACE: N fiches techniques turned into advisory Q&A pairs"],
+    ["Blueprint", "Adaptive Data", "Format, grounding and pesticide-safety rules (configs/blueprint_agro.txt)"],
+    ["Expand", "Adaptive Data", "French/English expansion of advisory rows (sample rate 0.5)"],
+    ["Invent", "Adaptive Data", "REPLACE: e.g. extra Pidgin post-harvest questions, checked by hand"],
+    ["Visualize", "Adaptive Data", "REPLACE: what you checked (task balance, languages, outliers) and fixed"],
+    ["AutoScientist", "AutoScientist", "REPLACE: goal text, base model, number of runs, chosen run"]
+  ],
+  "limitations": "- Synthetic messages cannot cover every way people write; real-message accuracy is reported separately when available.\n- Pidgin spelling is not standardised; quality varies.\n- Pest and disease triage only chooses among problems listed in the context table; it is not a diagnosis. Severe or unknown cases are sent to an extension officer.\n- The model must never be used to set pesticide doses without the official label; doses only come from label text placed in the context.\n- Prices and conversion factors in training contexts are examples; always pass current local references.",
+  "how_made": "1. Python generators (in the GitHub repo) produced messages and tables with exact labels in fr/en/pcm.\n2. A test set was split off and frozen before any upload (15% random + held-out templates, towns, items).\n3. Training rows went through Adaption Adaptive Data; advisory rows were created with Forge from openly licensed documents.\n4. `merge_adapted.py` dropped rows with broken JSON, wrong keys, duplicates or any overlap with the test set.",
+  "sources": [
+    ["Synthetic generators (this repo)", "own work", "cc-by-4.0"],
+    ["REPLACE document title", "REPLACE publisher + URL", "REPLACE licence"]
+  ]
+}

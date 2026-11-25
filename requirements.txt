@@ -1,0 +1,9 @@
+# data + scoring (CPU, your laptop)
+requests>=2.31
+pypdf>=4.0
+python-dotenv>=1.0
+# publishing
+huggingface_hub>=0.26
+kagglehub>=0.3
+# GPU evaluation (Kaggle notebook installs these itself)
+# transformers, peft, bitsandbytes, accelerate, torch

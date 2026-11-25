@@ -1,0 +1,11 @@
+.env
+kaggle.json
+__pycache__/
+*.pyc
+.venv/
+data/raw/
+data/build/gen_*.jsonl
+data/build/docs/text/
+results/*_base.jsonl
+results/*_adapted.jsonl
+release/

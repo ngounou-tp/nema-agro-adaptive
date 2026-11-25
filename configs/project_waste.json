@@ -1,0 +1,80 @@
+{
+  "_comment": "Fill every REPLACE value before running src/make_cards.py. hf_user / kaggle_user = your usernames.",
+  "project": "waste",
+  "author": "Patricia Ornella Ngounou Tchuinteu",
+  "hf_user": "REPLACE",
+  "kaggle_user": "REPLACE",
+  "model_name": "REVALO-Waste LoRA",
+  "hf_model_repo": "REPLACE/revalo-waste-lora",
+  "hf_dataset_repo": "REPLACE/revalo-waste-dataset",
+  "kaggle_model_handle": "REPLACE/revalo-waste/transformers/lora-v1",
+  "kaggle_dataset_handle": "REPLACE/revalo-waste-dataset",
+  "kaggle_notebook_url": "REPLACE",
+  "github_repo": "https://github.com/REPLACE/nema-agro-adaptive",
+  "project_url": "REPLACE",
+  "base_model": "REPLACE (e.g. Qwen/Qwen3.5-9B: use the official Hub id)",
+  "license": "apache-2.0",
+  "data_license": "cc-by-4.0",
+  "languages": [
+    "fr",
+    "en",
+    "pcm"
+  ],
+  "tags": [
+    "waste-management",
+    "sanitation",
+    "circular-economy",
+    "cameroon",
+    "africa",
+    "lora",
+    "adaption",
+    "autoscientist"
+  ],
+  "lora_name": "revalo-waste",
+  "bench_name": "CamWasteBench v1",
+  "per_bucket": 40,
+  "eval_time": "REPLACE (e.g. 50 minutes)",
+  "autoscientist_winrate": "REPLACE (e.g. 68 of 100 comparisons)",
+  "one_line": "A waste and sanitation model for Cameroon that sorts waste items, reads pickup requests in French, English and Pidgin, and computes compost and value estimates from local parameters.",
+  "training_steps": [
+    [
+      "Seed data",
+      "kit generators",
+      "Waste sorting, pickup requests and compost calculations with exact labels"
+    ],
+    [
+      "Forge",
+      "Adaptive Data",
+      "REPLACE: hygiene/sanitation documents turned into Q&A"
+    ],
+    [
+      "Blueprint",
+      "Adaptive Data",
+      "Safety rules (configs/blueprint_waste.txt)"
+    ],
+    [
+      "Visualize",
+      "Adaptive Data",
+      "REPLACE"
+    ],
+    [
+      "AutoScientist",
+      "AutoScientist",
+      "REPLACE"
+    ]
+  ],
+  "limitations": "- Routes describe general good practice; local collection points differ by city and must be confirmed.\n- Compost figures depend entirely on the parameters passed in the context.\n- Pidgin spelling is not standardised.",
+  "how_made": "1. Python generators (in the GitHub repo) produced messages and tables with exact labels in fr/en/pcm.\n2. A test set was split off and frozen before any upload (15% random + held-out templates, towns, items).\n3. Training rows went through Adaption Adaptive Data; advisory rows were created with Forge from openly licensed documents.\n4. `merge_adapted.py` dropped rows with broken JSON, wrong keys, duplicates or any overlap with the test set.",
+  "sources": [
+    [
+      "Synthetic generators (this repo)",
+      "own work",
+      "cc-by-4.0"
+    ],
+    [
+      "REPLACE document title",
+      "REPLACE publisher + URL",
+      "REPLACE licence"
+    ]
+  ]
+}

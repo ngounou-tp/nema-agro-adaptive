@@ -1,0 +1,9 @@
+{
+  "_comment": "Adaptive Data run for the ADVISORY rows made by Forge from your fiches techniques (free-text answers). Rephrase + web grounding + French/English expansion are useful here. Check field names against the API reference before use.",
+  "column_mapping": {"prompt": "prompt", "completion": "completion"},
+  "recipe_specification": {"recipes": {"deduplication": true, "prompt_rephrase": true, "reasoning_traces": false}},
+  "brand_controls": {"blueprint": "PASTE configs/blueprint_agro.txt HERE", "hallucination_mitigation": true, "length": "concise"},
+  "language_expansion": {"type": "translate", "sample_rate": 0.5, "languages": ["fr", "en"]},
+  "training_type": "instruction_dataset",
+  "job_specification": {"idempotency_key": "nema-agro-advisory-v1", "max_rows": 2000}
+}

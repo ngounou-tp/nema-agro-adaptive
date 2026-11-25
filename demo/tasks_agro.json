@@ -1,0 +1,38 @@
+{
+  "agro_listing_extract": {
+    "instruction": "Task: agro_listing_extract. Read the marketplace message and return ONLY a JSON object with keys: intent (sell|buy), product, quantity, unit, quantity_kg, price, price_basis (per_unit|per_kg|total|null), currency, location, available_from (YYYY-MM-DD or null), quality, contact. Use the product and unit codes from the reference list. Resolve relative dates from the message date. quantity_kg = quantity x kg per unit only when the unit has a fixed weight, otherwise null. Use null for anything the message does not say.",
+    "sample_input": "Message date: 2026-01-31\nMessage: I want buy 30 bokit egusi for Foumbot. WhatsApp 671 04 01 47",
+    "context": "Product codes: maize = maïs, maize, corn; cassava = manioc, cassava, cassava; cassava_flour = farine de manioc, cassava flour, cassava flour; garri = gari, garri, garri; plantain = plantain, plantain, plantain; banana = banane douce, banana, banana; cocoa = cacao, cocoa, cocoa; coffee = café, coffee, coffee; tomato = tomate, tomato, tomato; onion = oignon, onion, onion; irish_potato = pomme de terre, irish potato, irish; groundnut = arachide, groundnut, groundnut; beans = haricot, beans, beans; rice = riz, rice, rice; yam = igname, yam, yam; cocoyam = macabo, cocoyam, cocoyam; palm_oil = huile de palme, palm oil, red oil; egusi = pistache, egusi, egusi; soybean = soja, soybeans, soya; pepper = piment, pepper, pepe.\nUnit codes: kg (1 kg); tonne (1000 kg); bag_100kg (100 kg); bag_65kg (65 kg); bag_60kg (60 kg); bag_50kg (50 kg); bag_25kg (25 kg); bucket (no fixed weight); basin (no fixed weight); crate (no fixed weight); bunch (no fixed weight); tuber_heap (no fixed weight); litre (no fixed weight); jerrycan_20l (no fixed weight).",
+    "lang": "pcm"
+  },
+  "agro_unit_price": {
+    "instruction": "Task: agro_unit_price. Using ONLY the conversion table and reference prices in the context, return a JSON object with keys: quantity_kg, price_per_kg, total_price, reference_price_per_kg, difference_pct. Round price_per_kg to the nearest whole franc and difference_pct to one decimal ((price_per_kg - reference) / reference x 100). Use null if the table lacks what you need.",
+    "sample_input": "Question: Un vendeur propose 4 bassines de tubercules de manioc à 5 750 FCFA l'unité. Calcule pour moi.",
+    "context": "Conversion table (cooperative reference): 1 basin of cassava = 35 kg.\nReference prices: cassava: 125 XAF/kg (example reference, Muyuka).",
+    "lang": "fr"
+  },
+  "agro_coop_ledger": {
+    "instruction": "Task: agro_coop_ledger. Turn the delivery notes into JSON with keys: entries (list of objects with member, product, quantity_kg, date YYYY-MM-DD) and totals_kg (object: member -> total kg across all products). Convert bags using the bag weights given in the notes header. Keep member names exactly as written.",
+    "sample_input": "Notes:\nCollection notes, coffee (2026). 1 bag = 60 kg.\n- 22/03: Ngum Florence delivered 157 kg\n- 27/03: Mballa Rose delivered 4 bag(s)\n- 25/03: Ngum Florence delivered 1 bag(s)\n- 27/03: Abena Sylvie delivered 135 kg\n- 24/03: Ngum Florence delivered 6 bag(s)",
+    "context": "",
+    "lang": "en"
+  },
+  "agro_trace_record": {
+    "instruction": "Task: agro_trace_record. Build a traceability lot record as JSON with keys: lot_id, producer, group, product, harvest_date, quantity_kg, last_treatment (product name or null), last_treatment_date, phi_days, phi_respected (true/false/null). lot_id format: <PRODUCT>-<TOWN first 3 letters, upper case, no accents>-<YYYYMMDD of harvest>. Take phi_days from the label table in the context; phi_respected is true when harvest_date minus last_treatment_date is at least phi_days; null when there was no treatment.",
+    "sample_input": "Story: Je suis Mbarga Jean, membre du GIC Femmes Actives Dschang. J'ai récolté 2339 kg de haricot le 04/11/2026. Dernier traitement avec Product B-3 (biological insecticide) le 15/10/2026.",
+    "context": "Label table (pre-harvest interval, days): Product K-12 (fungicide) = 14; Product T-7 (insecticide) = 7; Product C-21 (fungicide) = 21; Product B-3 (biological insecticide) = 3; Product F-10 (fungicide) = 10.",
+    "lang": "fr"
+  },
+  "agro_symptom_triage": {
+    "instruction": "Task: agro_symptom_triage. Compare the farmer's description with the problem table in the context. Return ONLY a JSON object with keys: crop, problem (a code from the table, or \"unknown\" if nothing matches), see_technician (true for high-severity problems or unknown), advice (the table's first actions, in the farmer's language: French for French, English for English or Pidgin; for unknown, advise a photo and a visit by an extension officer).",
+    "sample_input": "Farmer: Di plantain dey break and fall.",
+    "context": "Problem table:\n- crop=plantain; code=banana_weevil; name=Banana weevil; severity=medium; signs: tunnels in the corm; plants snapping or toppling; first actions (fr): Parer et nettoyer les rejets avant plantation; poser des pièges en morceaux de pseudo-tronc; propreté de la parcelle. | (en): Pare and clean suckers before planting; set traps made of pseudostem pieces; keep the plot clean.\n- crop=tomato; code=bacterial_wilt; name=Bacterial wilt; severity=high; signs: the plant wilts suddenly while still green; milky liquid flows from a cut stem put in water; first actions (fr): Arracher et détruire les plants; ne pas replanter tomate, piment ou pomme de terre sur la parcelle pendant plusieurs saisons; nettoyer les outils. | (en): Uproot and destroy plants; do not replant tomato, pepper or potato on that plot for several seasons; clean tools.\n- crop=maize; code=fall_armyworm; name=Fall armyworm; severity=high; signs: ragged holes in young leaves; wet sawdust-like droppings in the whorl; caterpillars hiding in the heart of the plant; first actions (fr): Inspecter les cornets tôt le matin; écraser les chenilles à la main; ne traiter qu'avec un produit homologué conseillé par un technicien. | (en): Check the whorls early in the morning; crush caterpillars by hand; treat only with a registered product advised by an extension officer.\n- crop=plantain; code=black_sigatoka; name=Black Sigatoka; severity=medium; signs: brown to black streaks on leaves; leaves dying early; first actions (fr): Couper les feuilles atteintes; bon espacement et drainage; demander conseil à un technicien. | (en): Cut off affected leaves; good spacing and drainage; ask an extension officer.",
+    "lang": "pcm"
+  },
+  "agro_input_safety": {
+    "instruction": "Task: agro_input_safety. Answer the question using ONLY the registered-products table in the context. Return ONLY a JSON object with keys: decision (label_dose | not_registered | refuse_unsafe | seek_medical_help), dose (copy the label dose exactly when decision is label_dose, else null), message (short answer in the user's language; always remind protective equipment when spraying is involved). Never invent a dose.",
+    "sample_input": "Question: What dose of Product K-12 should I use on my tomato?",
+    "context": "Registered products (label data):\n- Product K-12 (fungicide): crops = tomato, cocoa, pepper; dose = 40 g per 15 L sprayer; pre-harvest interval = 14 days\n- Product T-7 (insecticide): crops = maize, beans; dose = 25 mL per 15 L sprayer; pre-harvest interval = 7 days\n- Product H-5 (herbicide): crops = maize, cassava; dose = 100 mL per 15 L sprayer; pre-harvest interval = 30 days\n- Product C-21 (fungicide): crops = cocoa, coffee; dose = 50 g per 15 L sprayer; pre-harvest interval = 21 days",
+    "lang": "en"
+  }
+}

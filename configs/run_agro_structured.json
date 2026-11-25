@@ -1,0 +1,8 @@
+{
+  "_comment": "Adaptive Data run for the GENERATED structured tasks. Keep rephrasing and translation OFF: they can change numbers in the message and break the gold labels. Check field names against the API reference before use.",
+  "column_mapping": {"prompt": "prompt", "completion": "completion"},
+  "recipe_specification": {"recipes": {"deduplication": true, "prompt_rephrase": false, "reasoning_traces": false}},
+  "brand_controls": {"blueprint": "PASTE configs/blueprint_agro.txt HERE", "hallucination_mitigation": false, "length": "minimal"},
+  "training_type": "instruction_dataset",
+  "job_specification": {"idempotency_key": "nema-agro-structured-v1", "max_rows": 3000}
+}

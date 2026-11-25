@@ -1,0 +1,20 @@
+{
+  "waste_sort": {
+    "instruction": "Task: waste_sort. Classify the waste item. Return ONLY a JSON object with keys: category (organic | plastic_rigid | plastic_film | paper_cardboard | glass | metal | ewaste | hazardous | textile | residual), valorisable (true/false), hazardous (true/false), route (what to do with it, in the user's language: French for French, English for English or Pidgin).",
+    "sample_input": "Question: Comment jeter vieux vêtements ?",
+    "context": "",
+    "lang": "fr"
+  },
+  "waste_compost_calc": {
+    "instruction": "Task: waste_compost_calc. Use ONLY the parameters in the context. Return ONLY a JSON object with keys: input_kg, organic_kg, compost_kg, value_xaf. organic_kg = input_kg x organic share; compost_kg = organic_kg x compost yield; value_xaf = compost_kg x price per kg. Round every number to the nearest whole number.",
+    "sample_input": "Question: Notre quartier collecte 155 sacs de 10 kg de déchets par semaine. Combien de compost et quelle valeur ?",
+    "context": "Parameters: organic share of this waste = 80%; compost yield = 35% of organic mass; selling price of compost = 125 XAF per kg.",
+    "lang": "fr"
+  },
+  "waste_pickup_extract": {
+    "instruction": "Task: waste_pickup_extract. Read the pickup request and return ONLY a JSON object with keys: city, neighbourhood, waste_type (household | green | construction | ewaste | bulky | mixed), bags (integer or null), urgency (low | normal | high), contact (digits only or null).",
+    "sample_input": "Message: Abeg come carry 6 bag grass and stick wey we cut for Djeleng, Bafoussam. No hurry, any time wey you fit. Call me 672 68 85 30",
+    "context": "",
+    "lang": "pcm"
+  }
+}
