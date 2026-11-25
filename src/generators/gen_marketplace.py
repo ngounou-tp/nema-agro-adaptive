@@ -167,12 +167,16 @@ def build_one(rng: random.Random, lex: dict, lang: str, intent: str, msg_date: d
     if rng.random() < 0.3:  # people often type without accents
         msg = msg.replace("é", "e").replace("è", "e").replace("à", "a")
 
+    # Fixed-weight units only, as INSTRUCTION says and as build_dataset labels the manual (test_real) rows.
+    # Product container weights (lexicon kg_per_unit) are not in this task's context, so the model cannot know them.
+    quantity_kg = qty * unit["kg"] if unit["kg"] is not None else None
+
     gold = {
         "intent": intent,
         "product": product["id"],
         "quantity": qty,
         "unit": unit_id,
-        "quantity_kg": qty * unit["kg"] if unit["kg"] else None,
+        "quantity_kg": quantity_kg,
         "price": price,
         "price_basis": basis,
         "currency": "XAF" if price is not None else None,
@@ -186,17 +190,23 @@ def build_one(rng: random.Random, lex: dict, lang: str, intent: str, msg_date: d
                         meta={"region": region, "gold": gold})
 
 
-DRY = {"maize", "cassava_flour", "garri", "cocoa", "coffee", "groundnut", "beans", "rice", "egusi", "soybean"}
-FRESH = {"cassava", "plantain", "banana", "tomato", "irish_potato", "yam", "cocoyam", "pepper", "onion"}
+DRY = {"maize", "sorghum", "millet", "rice", "cassava_flour", "garri", "cassava_chips", "cocoa", "coffee", "groundnut",
+       "beans", "cowpea", "soybean", "sesame", "egusi", "njansang", "bush_mango", "kola_nut"}
+FRESH = {"cassava", "cassava_leaves", "plantain", "banana", "tomato", "irish_potato", "sweet_potato", "yam", "cocoyam",
+         "taro", "pepper", "onion", "okra", "ginger", "huckleberry", "eru", "bitterleaf", "safou", "avocado",
+         "watermelon", "pineapple"}
+RIPE = {"plantain", "banana", "tomato", "safou", "avocado", "watermelon", "pineapple"}
 
 
 def quality_choices(pid: str):
     """Indexes into lexicon quality lists that make sense for this product."""
     idx = [1, 2, 6]  # first grade, grade 1, sorted: any product
     if pid in DRY:
-        idx += [0, 4]  # well dried, no mould
+        idx += [0, 4, 8, 9]  # well dried, no mould, new harvest, clean
     if pid in FRESH:
         idx += [5]  # fresh
+    if pid in RIPE:
+        idx += [7]  # ripe
     if pid == "cocoa":
         idx += [3]  # well fermented
     return idx

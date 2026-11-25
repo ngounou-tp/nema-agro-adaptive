@@ -1,2 +1,1 @@
 lang,message_date,message,intent,product,quantity,unit,price,price_basis,location,available_from,quality,contact
-pcm,2026-11-20,"EXAMPLE (delete this row): I get 2 bag corn for sell for Bafoussam, 18000 one bag. Call me 699000000",sell,maize,2,bag_100kg,18000,per_unit,Bafoussam,,,699000000

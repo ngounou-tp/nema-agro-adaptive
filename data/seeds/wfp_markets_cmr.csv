@@ -1,0 +1,173 @@
+market_id,market,countryiso3,admin1,admin2,latitude,longitude
+1578,Ngong,CMR,Nord,Bénoué,9.02,13.51
+1579,Pitoa,CMR,Nord,Bénoué,9.38,13.53
+1580,Adoumri,CMR,Nord,Bénoué,9.25,13.8
+1581,Pintchoumba,CMR,Nord,Faro,8.48,13.45
+1582,Godé,CMR,Nord,Faro,8.53,13.08
+1583,Poli,CMR,Nord,Faro,8.47,13.24
+1584,Guider,CMR,Nord,Mayo-Louti,9.93,13.95
+1585,Figuil,CMR,Nord,Mayo-Louti,9.75,13.97
+1586,Mayo Oulo,CMR,Nord,Mayo-Louti,9.96,13.62
+1587,Mbaiboum,CMR,Nord,Mayo-Rey,7.54,15.45
+1588,Rey Bouba,CMR,Nord,Mayo-Rey,8.67,14.18
+1589,Madingring,CMR,Nord,Mayo-Rey,8.46,15.01
+1590,Kousseri,CMR,Extrême-Nord,Logone-et-Chari,12.08,15.03
+1591,Logone-Birni,CMR,Extrême-Nord,Logone-et-Chari,11.78,15.1
+1592,Mada,CMR,Extrême-Nord,Mayo-Tsanaga,10.8,13.94
+1593,Garoua,CMR,Nord,Bénoué,9.3,13.4
+2246,Bertoua 2,CMR,Est,Lom-et-Djérem,4.57,13.69
+2247,Bertoua 1,CMR,Est,Lom-et-Djérem,4.58,13.68
+2248,Betare Oya,CMR,Est,Lom-et-Djérem,5.59,14.08
+2249,Guiwa Yangamo,CMR,Est,Lom-et-Djérem,4.97,14.05
+2250,Mandjou,CMR,Est,Lom-et-Djérem,4.6,13.73
+2251,Ndokayo,CMR,Est,Lom-et-Djérem,5.51,14.12
+2252,Tongo Gandima,CMR,Est,Lom-et-Djérem,5.18,14
+2253,Batouri,CMR,Est,Kadey,4.44,14.36
+2254,Gbiti,CMR,Est,Kadey,4.68,14.72
+2255,Kentzou,CMR,Est,Kadey,4.18,15.03
+2256,Kétté,CMR,Est,Kadey,4.96,14.56
+2257,Batoua Godolé,CMR,Adamaoua,Mbéré,6.95,14.9
+2258,Garoua Boulaï,CMR,Est,Lom-et-Djérem,5.9,14.55
+2259,Meiganga,CMR,Adamaoua,Mbéré,6.51,14.29
+2260,Ngaoui,CMR,Adamaoua,Mbéré,6.75,14.95
+2261,Yamba,CMR,Adamaoua,Vina,6.89,14.1
+2307,Maroua,CMR,Extrême-Nord,Diamaré,10.6,14.33
+2308,Yagoua,CMR,Extrême-Nord,Mayo-Danay,10.34,15.23
+2309,Kaele,CMR,Extrême-Nord,Mayo-Kani,10.11,14.45
+2310,Mora,CMR,Extrême-Nord,Mayo-Sava,11.05,14.14
+2311,Mokolo,CMR,Extrême-Nord,Mayo-Tsanaga,10.74,13.8
+2566,Bafoussam,CMR,Ouest,Mifi,5.48,10.42
+2567,Bamenda,CMR,Nord-Ouest,Mezam,5.96,10.15
+2579,Douala-Congo,CMR,Littoral,Wouri,4.04,9.7
+2613,Yaoundé-Mfoundi,CMR,Centre,Mfoundi,3.86,11.52
+4250,Boccom,CMR,Est,Lom-et-Djérem,5.24,13.91
+4251,Buea,CMR,Sud-Ouest,Fako,4.16,9.27
+4332,Mara,CMR,Extrême-Nord,Logone-et-Chari,12.39,14.9
+4336,Maroua-Dougoy,CMR,Extrême-Nord,Diamaré,10.61,14.35
+5260,Douala-Bonaberi,CMR,Littoral,Wouri,4.08,9.65
+5261,Douala-Marché Central,CMR,Littoral,Wouri,4.02,9.71
+5262,Douala-Sandaga,CMR,Littoral,Wouri,4.06,9.7
+5263,Fundong,CMR,Nord-Ouest,Boyo,6.28,10.28
+5264,Kumba,CMR,Sud-Ouest,Meme,4.64,9.45
+5266,Limbé,CMR,Sud-Ouest,Fako,4.02,9.17
+5267,Mamfé,CMR,Sud-Ouest,Manyu,5.76,9.31
+5268,Ndop,CMR,Nord-Ouest,Ngo-Ketunjia,5.99,10.44
+5269,Nkambe,CMR,Nord-Ouest,Donga-Mantung,6.58,10.71
+5270,Wum,CMR,Nord-Ouest,Menchum,6.39,10.08
+5271,Yaoundé-Mokolo,CMR,Centre,Mfoundi,3.87,11.5
+5272,Yaoundé-Marché 8e,CMR,Centre,Mfoundi,3.89,11.5
+5275,Kumbo,CMR,Nord-Ouest,Bui,6.21,10.68
+5528,Bamenda-Nkwen,CMR,Nord-Ouest,Mezam,5.96,10.17
+5529,Zamay,CMR,Extrême-Nord,Mayo-Tsanaga,10.63,13.9
+6549,Guzang,CMR,Nord-Ouest,Momo,5.83,9.9
+6702,Muea,CMR,Sud-Ouest,Fako,4.17,9.3
+6703,Mutengene,CMR,Sud-Ouest,Fako,4.1,9.31
+6704,Tiko,CMR,Sud-Ouest,Fako,4.07,9.37
+6705,Barombi Kang,CMR,Sud-Ouest,Meme,4.59,9.47
+7599,Tibati,CMR,Adamaoua,Djérem,6.47,12.63
+7600,Ngaoundal,CMR,Adamaoua,Djérem,6.47,13.27
+7601,Galim tignère,CMR,Adamaoua,Faro-et-Déo,7.1,12.47
+7602,Tignère,CMR,Adamaoua,Faro-et-Déo,7.37,12.65
+7603,Banyo,CMR,Adamaoua,Mayo-Banyo,6.75,11.8
+7604,Mayo Darlé,CMR,Adamaoua,Mayo-Banyo,6.5,11.55
+7605,Mbé,CMR,Adamaoua,Vina,7.86,13.59
+7607,Ngaoundéré,CMR,Adamaoua,Vina,7.33,13.58
+7608,Obala,CMR,Centre,Lekié,4.17,11.53
+7609,Ntui,CMR,Centre,Mbam-et-Kim,4.45,11.63
+7610,Mfou,CMR,Centre,Mefou-et-Afamba,3.72,11.64
+7611,Ngoumou,CMR,Centre,Mefou-et-Akono,3.59,11.31
+7612,Mbalmayo,CMR,Centre,Nyong-et-So'o,3.52,11.51
+7613,Yokadouma,CMR,Est,Boumba-et-Ngoko,3.51,15.05
+7614,Gazawa,CMR,Extrême-Nord,Diamaré,10.54,14.14
+7615,Salak,CMR,Extrême-Nord,Diamaré,10.46,14.24
+7616,Fotokol,CMR,Extrême-Nord,Logone-et-Chari,12.38,14.22
+7617,Afadé,CMR,Extrême-Nord,Logone-et-Chari,12.23,14.64
+7618,Blangoua,CMR,Extrême-Nord,Logone-et-Chari,12.78,14.55
+7619,Makary,CMR,Extrême-Nord,Logone-et-Chari,12.59,14.46
+7620,Maltam,CMR,Extrême-Nord,Logone-et-Chari,12.18,14.82
+7621,Mblamé,CMR,Extrême-Nord,Logone-et-Chari,12.33,14.56
+7622,Doukoula,CMR,Extrême-Nord,Mayo-Kani,10.3,14.69
+7623,Gobo,CMR,Extrême-Nord,Mayo-Danay,10,15.42
+7624,Pouss,CMR,Extrême-Nord,Mayo-Danay,10.85,15.05
+7625,Amchidé,CMR,Extrême-Nord,Mayo-Sava,11.24,14.14
+7626,Tokombere,CMR,Extrême-Nord,Mayo-Sava,10.87,14.15
+7627,Meme,CMR,Extrême-Nord,Mayo-Sava,10.93,14.25
+7628,Kolofata,CMR,Extrême-Nord,Mayo-Sava,11.16,14.01
+7629,Magdémé,CMR,Extrême-Nord,Mayo-Sava,11.17,14.24
+7630,Seraja,CMR,Extrême-Nord,Mayo-Sava,10.99,14.19
+7631,Koza,CMR,Extrême-Nord,Mayo-Tsanaga,10.87,13.88
+7632,Mogode,CMR,Extrême-Nord,Mayo-Tsanaga,10.61,13.57
+7633,Gardala,CMR,Extrême-Nord,Mayo-Tsanaga,10.57,13.86
+7634,Korsamba,CMR,Extrême-Nord,Mayo-Tsanaga,11,13.94
+7635,Lmelong,CMR,Littoral,Moungo,5.12,9.95
+7636,Yabassi,CMR,Littoral,Nkam,4.46,9.96
+7637,Edéa,CMR,Littoral,Sanaga-Maritime,3.8,10.12
+7638,Madagascar,CMR,Littoral,Wouri,4.03,9.73
+7639,Mayo galke,CMR,Nord,Mayo-Rey,8.4,14.23
+7640,Santa,CMR,Nord-Ouest,Mezam,5.8,10.16
+7641,Mbengwi,CMR,Nord-Ouest,Momo,6.01,9.97
+7642,Mbouda,CMR,Ouest,Bamboutos,5.59,10.25
+7643,Dschang,CMR,Ouest,Menoua,5.44,10.06
+7644,Bagangté,CMR,Ouest,Ndé,5.14,10.53
+7645,Founbot,CMR,Ouest,Noun,5.52,10.64
+7646,Sangmelima,CMR,Sud,Dja-et-Lobo,2.94,11.94
+7647,Ebolowa,CMR,Sud,Mvila,2.92,11.15
+7648,Kribi,CMR,Sud,Océan,2.95,9.91
+7649,Abang-minko'o,CMR,Sud,Vallée-du-Ntem,2.32,11.43
+7650,Menguikom,CMR,Sud,Vallée-du-Ntem,2.18,11.12
+7651,Fiango,CMR,Sud-Ouest,Meme,4.64,9.45
+7663,Kidam,CMR,Extrême-Nord,Logone-et-Chari,11.86,15.05
+7768,Waza,CMR,Extrême-Nord,Logone-et-Chari,11.4,14.57
+8559,Bamyanga,CMR,Adamaoua,Vina,7.29,13.58
+8966,Mozogo,CMR,Extrême-Nord,Mayo-Tsanaga,10.96,13.9
+8967,Kourgui,CMR,Extrême-Nord,Mayo-Sava,11.09,14.11
+8968,Kossa,CMR,Extrême-Nord,Mayo-Sava,11.13,14.32
+8969,Double,CMR,Extrême-Nord,Mayo-Sava,11.13,14.19
+8970,Hile Alifa,CMR,Extrême-Nord,Logone-et-Chari,12.68,14.29
+8971,Kai Kai,CMR,Extrême-Nord,Mayo-Danay,10.86,14.83
+8972,Vele,CMR,Extrême-Nord,Mayo-Danay,10.5,15.19
+8973,Maga,CMR,Extrême-Nord,Mayo-Danay,10.85,14.94
+8974,Bogo,CMR,Extrême-Nord,Diamaré,10.74,14.61
+8975,Bourrha,CMR,Extrême-Nord,Mayo-Tsanaga,10.34,13.55
+8976,Hina,CMR,Extrême-Nord,Mayo-Tsanaga,10.36,13.85
+8977,Moskota,CMR,Extrême-Nord,Mayo-Tsanaga,10.94,13.87
+8982,Doulo,CMR,Extrême-Nord,Mayo-Sava,11.11,14.17
+8988,Mawa,CMR,Extrême-Nord,Mayo-Tsanaga,10.94,13.91
+8989,Guirvidig,CMR,Extrême-Nord,Mayo-Danay,10.89,14.83
+8999,Meri,CMR,Extrême-Nord,Diamaré,10.77,14.12
+9521,Bali,CMR,Nord-Ouest,Mezam,5.89,10.01
+9522,Bambui,CMR,Nord-Ouest,Mezam,6.01,10.23
+9523,Widikum,CMR,Nord-Ouest,Momo,5.86,9.76
+9524,Njinikom,CMR,Nord-Ouest,Boyo,6.24,10.33
+9525,Mbingo,CMR,Nord-Ouest,Boyo,6.17,10.28
+9526,Babungo,CMR,Nord-Ouest,Ngo-Ketunjia,6.07,10.46
+9527,Balikumbat,CMR,Nord-Ouest,Ngo-Ketunjia,5.9,10.38
+9528,Ndu,CMR,Nord-Ouest,Donga-Mantung,6.43,10.79
+9529,Misaje,CMR,Nord-Ouest,Donga-Mantung,6.58,10.55
+9530,Ako,CMR,Nord-Ouest,Donga-Mantung,6.83,10.72
+9531,Jakiri,CMR,Nord-Ouest,Bui,6.08,10.64
+9532,Mile4,CMR,Sud-Ouest,Fako,4.06,9.23
+9533,Limbe Centre,CMR,Sud-Ouest,Fako,4.01,9.21
+9534,Muyuka,CMR,Sud-Ouest,Fako,4.17,9.41
+9535,Nguti,CMR,Sud-Ouest,Manyu,5.34,9.42
+9536,Tombel,CMR,Sud-Ouest,Kupe-Manenguba,4.75,9.67
+9537,Eyumojock,CMR,Sud-Ouest,Manyu,5.77,8.98
+9538,Tinto,CMR,Sud-Ouest,Manyu,5.54,9.59
+9539,Mundemba,CMR,Sud-Ouest,Ndian,4.97,8.92
+9667,Bamendakwe,CMR,Nord-Ouest,Mezam,5.93,10.2
+9668,Main,CMR,Nord-Ouest,Mezam,5.95,10.15
+9669,Mbon,CMR,Nord-Ouest,Momo,6,10.01
+9670,Binka,CMR,Nord-Ouest,Donga-Mantung,6.58,10.71
+9671,Bafmeng,CMR,Nord-Ouest,Menchum,6.35,10.24
+9672,Benakuma,CMR,Nord-Ouest,Menchum,6.41,9.92
+9673,Befang,CMR,Nord-Ouest,Menchum,6.33,10.01
+9674,Mbve,CMR,Nord-Ouest,Bui,6.21,10.68
+9682,Bambili,CMR,Nord-Ouest,Mezam,6.02,10.15
+9683,Bafut,CMR,Nord-Ouest,Mezam,6.09,10.12
+9684,Dumbu,CMR,Nord-Ouest,Menchum,6.42,10.3
+10256,Bondo,CMR,Adamaoua,Mbéré,6.51,14.64
+10257,Kombo Laka,CMR,Adamaoua,Mbéré,6.42,14.63
+10258,Goro,CMR,Adamaoua,Mbéré,6.43,13.89
+10259,Dir,CMR,Adamaoua,Mbéré,6.31,14.35
+10260,Yarmbang,CMR,Adamaoua,Mbéré,7.01,14.96
+10261,Touboro,CMR,Nord,Mayo-Rey,7.76,15.34

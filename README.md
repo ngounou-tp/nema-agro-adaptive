@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # NEMA-Agro + REVALO-Waste — Adaptive Intelligence Challenge kit
 
 Everything runs in the cloud: data adaptation and training on the Adaption app (adaptionlabs.ai/app),
@@ -36,6 +35,4 @@ Follow the playbook document step by step; this README is only the map.
 Generators, dataset builder (stable test split, leakage check), scorer, card generator, Adaption client (dry-run),
 notebook syntax, PHP syntax. `run_eval.py`, `demo/app.py`, `publish.py`, notebook 2 and `serve/` need a GPU or your
 accounts and were only syntax-checked: run them first on a few examples.
-=======
-# nema-agro-adaptive
->>>>>>> 456649819d9ae28d46ad94bea3b8060d4c371ccd
+

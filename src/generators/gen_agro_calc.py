@@ -30,21 +30,6 @@ UNIT_INSTR = (
     "((price_per_kg - reference) / reference x 100). Use null if the table lacks what you need."
 )
 
-LOCAL_UNITS = {  # kg per unit, per product: these are example coop reference values, edit them to yours
-    "tomato": {"crate": 30, "basin": 25},
-    "cassava": {"basin": 35},
-    "garri": {"bucket": 12, "basin": 28},
-    "maize": {"bucket": 13},
-    "groundnut": {"bucket": 11},
-    "beans": {"bucket": 13},
-    "irish_potato": {"bucket": 12},
-    "cocoyam": {"basin": 30},
-    "egusi": {"bucket": 9},
-    "pepper": {"basin": 15, "bucket": 8},
-    "plantain": {"bunch": 15},
-    "banana": {"bunch": 18},
-}
-
 WFP_NAME = {  # HDX commodity name -> lexicon id (extend after you open the CSV)
     "Maize": "maize", "Maize (white)": "maize", "Cassava": "cassava", "Cassava flour": "cassava_flour",
     "Rice (imported)": "rice", "Rice (local)": "rice", "Beans": "beans", "Beans (dry)": "beans",
@@ -81,10 +66,24 @@ def load_wfp_refs(path: Path):
 
 
 def unit_price_example(rng, lex, wfp, lang):
-    pid = rng.choice(list(LOCAL_UNITS))
+    conversions = {}
+    for product in lex["products"]:
+        values = {}
+        for unit_id in product["units"]:
+            unit = lex["units"][unit_id]
+            kg_per = unit["kg"]
+            if kg_per is None:
+                kg_per = product.get("kg_per_unit", {}).get(unit_id)
+            if kg_per is not None:
+                values[unit_id] = kg_per
+        if values:
+            conversions[product["id"]] = values
+
+    eligible = list(conversions)
+    pid = rng.choice(eligible)
     product = next(p for p in lex["products"] if p["id"] == pid)
-    unit_id = rng.choice(list(LOCAL_UNITS[pid]))
-    kg_per = LOCAL_UNITS[pid][unit_id]
+    unit_id = rng.choice(list(conversions[pid]))
+    kg_per = conversions[pid][unit_id]
     qty = rng.choice([1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20])
     lo, hi = product.get("price_per_kg", [150, 600])
     per_unit = int(round(rng.uniform(lo, hi) * kg_per / 250.0)) * 250
@@ -98,7 +97,7 @@ def unit_price_example(rng, lex, wfp, lang):
         ref_txt = f"{pid}: {ref} XAF/kg (example reference, {market})"
     # sometimes the table lacks the unit -> answer must be nulls (teaches the model not to guess)
     missing = rng.random() < 0.08
-    table_units = {u: k for u, k in LOCAL_UNITS[pid].items() if not (missing and u == unit_id)}
+    table_units = {u: k for u, k in conversions[pid].items() if not (missing and u == unit_id)}
     conv = "; ".join(f"1 {u} of {pid} = {k} kg" for u, k in table_units.items()) or "(no conversion listed)"
     context = f"Conversion table (cooperative reference): {conv}.\nReference prices: {ref_txt}."
     unit_word = lex["units"][unit_id][lang][1 if qty > 1 and len(lex["units"][unit_id][lang]) > 1 else 0]
