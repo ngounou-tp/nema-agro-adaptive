@@ -10,3 +10,4 @@ results/*_base.jsonl
 results/*_adapted.jsonl
 release/
 .kaggle_build/
+.github/
