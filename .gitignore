@@ -9,3 +9,4 @@ data/build/docs/text/
 results/*_base.jsonl
 results/*_adapted.jsonl
 release/
+.kaggle_build/

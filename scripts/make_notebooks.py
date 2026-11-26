@@ -46,10 +46,14 @@ HDX = 'https://data.humdata.org/api/3/action/package_show?id=wfp-food-prices-for
 missing = [n for n in ('wfp_food_prices_cmr.csv', 'wfp_markets_cmr.csv') if not (SEEDS / n).exists()]
 if missing:
     print('not in the repo, downloading from HDX:', missing)
-    for r in json.load(urllib.request.urlopen(HDX, timeout=60))['result']['resources']:
-        name = r['url'].rsplit('/', 1)[-1]
-        if name in missing:
-            urllib.request.urlretrieve(r['url'], SEEDS / name)
+    try:
+        for r in json.load(urllib.request.urlopen(HDX, timeout=60))['result']['resources']:
+            name = r['url'].rsplit('/', 1)[-1]
+            if name in missing:
+                urllib.request.urlretrieve(r['url'], SEEDS / name)
+    except OSError as e:
+        raise RuntimeError(f'{missing} are not in the kit and HDX is unreachable (Internet off?). '
+                           'Commit them to data/seeds/ in GitHub and update the Kaggle dataset.') from e
 with open(SEEDS / 'wfp_food_prices_cmr.csv', encoding='utf-8') as f:
     wfp = [r for r in csv.DictReader(f) if not r['date'].startswith('#')]
 print(f"WFP prices: {len(wfp)} rows, {min(r['date'] for r in wfp)} to {max(r['date'] for r in wfp)}, "
@@ -89,14 +93,43 @@ print('agro_unit_price examples with real WFP reference prices:', n_wfp)
 assert n_wfp, 'no WFP reference prices were used: check the WFP cell above'
 """
 
+GET_KIT = """\
+# Gets the kit code. Works with Internet OFF if the GitHub-linked Kaggle dataset is attached (Add Input).
+import glob, os, shutil, subprocess
+from pathlib import Path
+
+REPO = 'https://github.com/ngounou-tp/nema-agro-adaptive.git'  # used only when Internet is on
+KIT = Path('/kaggle/working/kit')
+if KIT.exists():
+    shutil.rmtree(KIT)
+
+found = sorted(glob.glob('/kaggle/input/**/scripts/build_all.sh', recursive=True))
+if found:
+    src = Path(found[0]).parents[1]
+    shutil.copytree(src, KIT)
+    subprocess.run(['chmod', '-R', 'u+w', str(KIT)], check=True)  # /kaggle/input is read-only
+    print('kit copied from the attached Kaggle dataset:', src)
+else:
+    r = subprocess.run(['git', 'clone', '-q', '--depth', '1', REPO, str(KIT)], capture_output=True, text=True)
+    if r.returncode:
+        raise RuntimeError('Could not get the kit: no attached dataset contains scripts/build_all.sh and git clone failed '
+                           '(Internet is off). Click Add Input and attach the dataset made from the GitHub repo.\\n' + r.stderr)
+    print('kit cloned from', REPO)
+
+os.chdir(KIT)
+print('working in', os.getcwd())
+"""
+
 BUILD = [
     md("# 1. Build the datasets (CPU, no GPU needed)\n\nRuns the kit's generators in the cloud and writes the files you upload to Adaption.\n\n"
-       "**Settings:** Accelerator = None, Internet = On. Edit `REPO` below, then *Run All* (about 2 minutes).\n\n"
+       "**Settings:** Accelerator = None. Internet can stay **Off**: in the right panel click **Add Input** and attach the Kaggle "
+       "dataset created from the GitHub repo (Datasets → New Dataset → GitHub link). With Internet On, the next cell clones "
+       "the repo instead. Then *Run All* (about 2 minutes).\n\n"
        "Your own data goes in the GitHub repo first (edit in the GitHub web editor): `data/seeds/manual_listings.csv` "
-       "(real messages), `data/seeds/advice_mcq.csv` and `data/seeds/hygiene_mcq.csv` (MCQs), `data/seeds/symptom_table.csv`."),
+       "(real messages), `data/seeds/advice_mcq.csv` and `data/seeds/hygiene_mcq.csv` (MCQs), `data/seeds/symptom_table.csv`. "
+       "After a push, update the Kaggle dataset (its page → Update / New version) so the notebook sees the change."),
     md(BUILD_SOURCES),
-    code("REPO = 'https://github.com/YOUR_GITHUB_USER/nema-agro-adaptive.git'  # your public kit repo\n"
-         "!git clone -q $REPO kit\n%cd kit"),
+    code(GET_KIT),
     md("## Check the data sources"),
     code(BUILD_CHECK),
     md("## Build"),
